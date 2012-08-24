@@ -1,11 +1,8 @@
 <?php
 namespace Verifier;
 /**
- * Работа со списком идентичных полей
- * @todo Дореализовать
- * создать набор функций в пространстве имен Conditions
- * в слачае множественных значений эталонных параметров, передавать их массивом
- * @author Максим Соколовский (my.sokolovsky@gmail.com)
+ * Working with a list of identical fields.
+ * @author Maxim Sokolovsky (my.sokolovsky@gmail.com)
  */
 class Each extends Item {
 

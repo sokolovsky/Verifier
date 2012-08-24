@@ -2,7 +2,7 @@
 namespace Verifier\Conditions;
 
 /**
- * Методы проверки условий
+ * Methods of test conditions
  */
 
 function equal($verifiedValue, $referenceValue) {

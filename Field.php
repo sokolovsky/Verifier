@@ -2,9 +2,9 @@
 namespace Verifier;
 
 /**
- * Описание Field
+ * Field for verification
  *
- * @author Максим Соколовский (my.sokolovsky@gmail.com)
+ * @author Maxim Sokolovsky (my.sokolovsky@gmail.com)
  */
 class Field extends Item {
 

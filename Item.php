@@ -1,7 +1,7 @@
 <?php
 namespace Verifier;
 /**
- * Описание Item
+ * Item (field or list of the same fields verification)
  *
  * @method Verifier\Item more(scalar $value, string $message)
  * @method Verifier\Item less(scalar $value, string $message)
@@ -20,7 +20,7 @@ namespace Verifier;
  * @method Verifier\Item email(string $message)
  * @method Verifier\Item url(string $message)
  *
- * @author Максим Соколовский (my.sokolovsky@gmail.com)
+ * @author Maxim Sokolovsky (my.sokolovsky@gmail.com)
  */
 abstract class Item {
 
@@ -36,8 +36,8 @@ abstract class Item {
 
     /**
      * @param Verifier $verifier
-     * @param mixed $value значение для верификации
-     * @param string $label метка поля (значения) верификации
+     * @param mixed $value Value for verification
+     * @param string $label Label field (value) verification
      */
     public function __construct(Verifier $verifier, $value, $label) {
         $this->_verifier = $verifier;
@@ -54,7 +54,7 @@ abstract class Item {
     }
 
     /**
-     * Если на текущий момент проверка пункта уже является ошибочны, остальная проверка игнорируется
+     * If you currently checking the item is already wrong, check the rest ignored.
      * @return \Verifier\Item
      */
     public function ifValid() {
@@ -65,7 +65,7 @@ abstract class Item {
     }
 
     /**
-     * Получение метки значения верификации
+     * Getting value labels verification.
      * @return string
      */
     public function getLabel() {
@@ -77,7 +77,7 @@ abstract class Item {
     }
 
     /**
-     * Получение списка ошибок
+     * Getting a list of errors.
      * @return array
      */
     public function getErrors() {
@@ -86,7 +86,7 @@ abstract class Item {
 
 
     /**
-     * Признак наличия ошибок
+     * Sign for errors.
      * @return bool
      */
     public function hasErrors() {

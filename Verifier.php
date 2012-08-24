@@ -8,7 +8,7 @@ require_once __DIR__.'/Conditions.php';
 /**
  * Verification of data
  *
- * @author Максим Соколовский (my.sokolovsky@gmail.com)
+ * @author Maxim Sokolovsky (my.sokolovsky@gmail.com)
  */
 class Verifier {
 
