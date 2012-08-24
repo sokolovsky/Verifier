@@ -6,7 +6,7 @@ require_once __DIR__.'/Each.php';
 require_once __DIR__.'/Conditions.php';
 
 /**
- * Вирификатор данных
+ * Verification of data
  *
  * @author Максим Соколовский (my.sokolovsky@gmail.com)
  */
@@ -25,8 +25,7 @@ class Verifier {
     private $_wasChange = true;
 
     /**
-     *
-     * @param array | object $data Данные для верификации
+     * @param array | object $data Data for verification
      */
     public function __construct($data) {
         if (is_scalar($data)) {
@@ -36,16 +35,16 @@ class Verifier {
     }
 
     /**
-     * Установка признака смены ошибочности у полей.
+     * Setting the flag of the fallacy in the fields.
      */
     public function setAsChanged() {
         $this->_wasChange = true;
     }
 
     /**
-     * Инициализация проверки поля по пути $path.
-     * @param string $label Метка для поля (ключ при показе ошибок)
-     * @param string $path  Путь к значению поля (если пустой, то значением будут являться все данные)
+     * Initialize field validation on the path $ path.
+     * @param string $label The label for the field (key when displaying errors)
+     * @param string $path  Path to the value of the field (if empty, then the value will be all data)
      * @return Field
      */
     public function field($label, $path = null) {
@@ -56,9 +55,9 @@ class Verifier {
 
 
     /**
-     * Проверка списка по пути $path
-     * @param string $label Метка для поля (ключ при показе ошибок)
-     * @param string $path  Путь к значению поля (если пустой, то значением будут являться все данные)
+     * Checking your way to $ path
+     * @param string $label The label for the field (key when displaying errors)
+     * @param string $path  Path to the value of the field (if empty, then the value will be all data)
      * @return Each
      */
     public function each($label, $path = null) {
@@ -67,8 +66,8 @@ class Verifier {
         return $this->_items[$path];
     }
     /**
-     * Выполнение проверки.
-     * @return type
+     * Getting errors.
+     * @return array
      */
     public function getErrors() {
         if ($this->_wasChange) {
@@ -87,7 +86,7 @@ class Verifier {
     }
 
     /**
-     * Признак валидности полей
+     * Symptom validity fields.
      * @return bool
      */
     public function isValid() {
