@@ -97,11 +97,13 @@ class Verifier {
         $arPath = explode('.', $path);
         $value = $this->_data;
         while($pathItem = array_shift($arPath)) {
+            $value = $value->$pathItem;
             if (count($arPath)) {
                 if (is_scalar($value->$pathItem)) {
                     throw new DatatypeException("Error field path  `$path` ($pathItem) " .  var_export($value, true));
+                } else {
+                    $value = (object)$value;
                 }
-                $value = (object)$value->$pathItem;
             }
         }
         return $value;
