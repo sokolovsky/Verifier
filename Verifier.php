@@ -29,7 +29,7 @@ class Verifier {
      */
     public function __construct($data) {
         if (is_scalar($data)) {
-            throw new DatatypeException("Верификатор работает только с полями");
+            throw new DatatypeException("The input data must be an array or object");
         }
         $this->_data = (object) $data;
     }
@@ -99,7 +99,7 @@ class Verifier {
         while($pathItem = array_shift($arPath)) {
             if (count($arPath)) {
                 if (is_scalar($value->$pathItem)) {
-                    throw new \Exception("Некоректный путь `$path` ($pathItem) " .  var_export($value, true));
+                    throw new DatatypeException("Error field path  `$path` ($pathItem) " .  var_export($value, true));
                 }
                 $value = (object)$value->$pathItem;
             }
