@@ -48,9 +48,7 @@ class Verifier {
      * @return Field
      */
     public function field($label, $path = null) {
-        $value = $this->_getDataByPath($path ?: $label);
-        $this->_items[$path] = new Field($this, $value, $label);
-        return $this->_items[$path];
+        return $this->_initItem('\Verifier\Field', $label, $path);
     }
 
 
@@ -61,9 +59,7 @@ class Verifier {
      * @return Each
      */
     public function each($label, $path = null) {
-        $value = $this->_getDataByPath($path ?: $label);
-        $this->_items[$path] = new Each($this, $value, $label);
-        return $this->_items[$path];
+        return $this->_initItem('\Verifier\Each', $label, $path = null);
     }
     /**
      * Getting errors.
@@ -91,6 +87,17 @@ class Verifier {
      */
     public function isValid() {
         return count($this->getErrors()) == 0;
+    }
+
+    private function _initItem($className, $label, $path = null) {
+        if (is_subclass_of($className, 'Item')) {
+            throw new ErrorCodeException("Class `$className` not successor from `Item`");
+        }
+        is_null($path) && ($path = $label);
+        $value = $this->_getDataByPath($path);
+        $this->_items[$path] = new $className($this, $value, $label);
+        return $this->_items[$path];
+
     }
 
     private function _getDataByPath($path) {
