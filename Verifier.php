@@ -89,6 +89,14 @@ class Verifier {
         return count($this->getErrors()) == 0;
     }
 
+    /**
+     * Item init by type
+     * @param string $className
+     * @param string $label
+     * @param string $path
+     * @return Item
+     * @throws ErrorCodeException
+     */
     private function _initItem($className, $label, $path = null) {
         if (is_subclass_of($className, 'Item')) {
             throw new ErrorCodeException("Class `$className` not successor from `Item`");
