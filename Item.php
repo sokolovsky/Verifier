@@ -48,7 +48,7 @@ abstract class Item {
     protected function getVerifyMethod($name) {
         $fName = __NAMESPACE__.'\Conditions\\'.$name;
         if (!function_exists($fName)) {
-            throw new ErrorCodeException("Проверочного метода {$name} не существует");
+            throw new ErrorCodeException("Method `{$name}` not exists");
         }
         return $fName;
     }
