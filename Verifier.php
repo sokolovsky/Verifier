@@ -24,6 +24,7 @@ class Verifier {
 
     private $_wasChange = true;
 
+    private $_useDependency = false;
     /**
      * @param array | object $data Data for verification
      */
@@ -39,6 +40,23 @@ class Verifier {
      */
     public function setAsChanged() {
         $this->_wasChange = true;
+    }
+
+    /**
+     * Setting uses dependency by other fields
+     * @return Verifier
+     */
+    public function useDependency() {
+        $this->_useDependency = true;
+        return $this;
+    }
+
+    /**
+     * Sign used dependency by fields
+     * @return boolean
+     */
+    public function isUseDependency() {
+        return $this->useDependency();
     }
 
     /**
