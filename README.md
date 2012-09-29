@@ -76,7 +76,7 @@ $verifier->field('email')
     ->ifValid()->email('`Email` field is invalid format');
 
 $verifier->field('login')
-    ->notNull('`Login` field must not be empty')d must be begin with the words');
+    ->notNull('`Login` field must not be empty');
     ->ifValid()->lengthMoreOrEqual(6, '`Login` field must be greater than 6 characters in length')
     ->byRegularExpression('/$\w/', '`Login` field must be begin with the words');
 
