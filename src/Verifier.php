@@ -77,8 +77,9 @@ class Verifier {
      * @return Each
      */
     public function each($label, $path = null) {
-        return $this->_initItem('\Verifier\Each', $label, $path = null);
+        return $this->_initItem('\Verifier\Each', $label, $path);
     }
+
     /**
      * Getting errors.
      * @return array
