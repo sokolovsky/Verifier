@@ -23,15 +23,6 @@ class ConditionCommand {
     }
 
     /**
-     * @param mixed $value
-     * @return $this
-     */
-    public function addArgument($value) {
-        $this->_args[] = $value;
-        return $this;
-    }
-
-    /**
      * @param int $num
      * @return mixed|null
      */
