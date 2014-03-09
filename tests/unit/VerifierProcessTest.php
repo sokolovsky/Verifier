@@ -45,4 +45,53 @@ class VerifierProcessTest extends PHPUnit_Framework_TestCase {
             'set' => array('Less than 4')
         ), $v->getErrors());
     }
+
+    public function testIfValidProcess() {
+        $v = new \Verifier\Verifier(array(
+            'data' => ''
+        ));
+
+        $v->field('data')
+            ->notEmpty('Empty data')
+            ->ifValid() // tear process if not valid field
+            ->url('data use as url');
+
+        $this->assertFalse($v->isValid());
+
+        $this->assertEquals(array(
+            'data' => array(
+                'Empty data'
+            )
+        ), $v->getErrors());
+
+        $v
+            ->refresh()
+            ->field('data')
+            ->notEmpty('Empty data')
+            ->url('data use as url');
+        $this->assertEquals(array(
+            'data' => array(
+                'Empty data',
+                'data use as url'
+            )
+        ), $v->getErrors());
+    }
+
+    public function testUseDependencyByFields() {
+        $v = new \Verifier\Verifier(array(
+            'one' => 1,
+            'two' => 2,
+            'three' => 3
+        ));
+
+        $v->useDependency();
+        $v->field('one')->more('three', 'one more than three');
+        $v->field('three')->more('two')->more('one');
+
+        $this->assertFalse($v->isValid());
+
+        $this->assertEquals(array(
+            'one' => array('one more than three')
+        ), $v->getErrors());
+    }
 }
