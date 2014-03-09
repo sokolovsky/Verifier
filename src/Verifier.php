@@ -67,7 +67,7 @@ class Verifier {
      * @return Field
      */
     public function field($label, $path = null) {
-        return $this->_initItem('\Verifier\Field', $label, $path);
+        return $this->_getItem('\Verifier\Field', $label, $path);
     }
 
 
@@ -78,7 +78,7 @@ class Verifier {
      * @return FieldsList
      */
     public function each($label, $path = null) {
-        return $this->_initItem('\Verifier\FieldsList', $label, $path);
+        return $this->_getItem('\Verifier\FieldsList', $label, $path);
     }
 
     public function hasItem($path) {
@@ -118,6 +118,11 @@ class Verifier {
         return count($this->getErrors()) == 0;
     }
 
+    public function refresh() {
+        $this->_items = array();
+        return $this;
+    }
+
     /**
      * Item init by type
      * @param string $className
@@ -126,13 +131,15 @@ class Verifier {
      * @return Item
      * @throws ErrorCodeException
      */
-    private function _initItem($className, $label, $path = null) {
+    private function _getItem($className, $label, $path = null) {
         if (is_subclass_of($className, 'Item')) {
             throw new ErrorCodeException("Class `$className` not successor from `Item`");
         }
         is_null($path) && ($path = $label);
-        $value = $this->_getDataByPath($path);
-        $this->_items[$path] = new $className($this, $value, $label);
+        if (!isset($this->_items[$path])) {
+            $value = $this->_getDataByPath($path);
+            $this->_items[$path] = new $className($this, $value, $label);
+        }
         return $this->_items[$path];
 
     }
