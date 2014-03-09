@@ -2,7 +2,7 @@
 namespace Verifier;
 require_once __DIR__.'/Item.php';
 require_once __DIR__.'/Field.php';
-require_once __DIR__.'/Each.php';
+require_once __DIR__ . '/FieldsList.php';
 require_once __DIR__.'/Conditions.php';
 require_once __DIR__.'/ConditionCommand.php';
 
@@ -75,10 +75,10 @@ class Verifier {
      * Checking your way to $ path
      * @param string $label The label for the field (key when displaying errors)
      * @param string $path  Path to the value of the field (if empty, then the value will be all data)
-     * @return Each
+     * @return FieldsList
      */
     public function each($label, $path = null) {
-        return $this->_initItem('\Verifier\Each', $label, $path);
+        return $this->_initItem('\Verifier\FieldsList', $label, $path);
     }
 
     public function hasItem($path) {
