@@ -89,7 +89,7 @@ abstract class Item {
         if (!$this->_notExecute) {
             $this->_verifier->setAsChanged();
             $refValue = $command->getReferenceValue();
-            if ($this->_verifier->useDependency() && $this->_verifier->hasItem($refValue)) {
+            if ($this->_verifier->isUseDependency() && $this->_verifier->hasItem($refValue)) {
                 $dependsRefValue = $this->_verifier->field($refValue)->getValue();
                 $command->setReferenceValue($dependsRefValue);
             }
