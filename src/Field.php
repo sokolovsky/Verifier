@@ -9,9 +9,7 @@ namespace Verifier;
 class Field extends Item {
 
     public function __call($method, $args) {
-        $function = $this->getVerifyMethod($method);
-        $message = array_pop($args);
-        $referenceValue = $this->getReferenceValue($args);
-        return $this->processCondition($function($this->getValue(), $referenceValue), $message);
+        $command = $this->createCommand($method, $args);
+        return $this->processCondition($command, $this->getValue());
     }
 }

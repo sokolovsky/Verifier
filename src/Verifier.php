@@ -4,6 +4,7 @@ require_once __DIR__.'/Item.php';
 require_once __DIR__.'/Field.php';
 require_once __DIR__.'/Each.php';
 require_once __DIR__.'/Conditions.php';
+require_once __DIR__.'/ConditionCommand.php';
 
 /**
  * Verification of data
@@ -78,6 +79,15 @@ class Verifier {
      */
     public function each($label, $path = null) {
         return $this->_initItem('\Verifier\Each', $label, $path);
+    }
+
+    public function hasItem($path) {
+        try {
+            $this->_getDataByPath($path);
+            return true;
+        } catch (DatatypeException $e) {
+        }
+        return false;
     }
 
     /**

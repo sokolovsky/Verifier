@@ -7,12 +7,9 @@ namespace Verifier;
 class Each extends Item {
 
     public function __call($method, $args) {
-        $function = $this->getVerifyMethod($method);
-        $message = array_pop($args);
-        $referenceValue = $this->getReferenceValue($args);
-
+        $command = $this->createCommand($method, $args);
         foreach ($this->getValue() as $itemValue) {
-            $this->processCondition($function($itemValue, $referenceValue), $message);
+            $this->processCondition($command, $itemValue);
         }
         return $this;
     }

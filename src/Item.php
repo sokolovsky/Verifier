@@ -107,15 +107,26 @@ abstract class Item {
         return !empty($this->_errors);
     }
 
-    protected function processCondition($condition, $message) {
+    protected function processCondition(ConditionCommand $command, $value) {
         if (!$this->_notExecute) {
             $this->_verifier->setAsChanged();
-            !(bool) $condition && $this->_addError($message);
+            $refValue = $command->getReferenceValue();
+            if ($this->_verifier->useDependency() && $this->_verifier->hasItem($refValue)) {
+                $dependsRefValue = $this->_verifier->field($refValue)->getValue();
+                $command->setReferenceValue($dependsRefValue);
+            }
+            !$command->execute($value) && $this->_addError($command->getMessage());
         }
         return $this;
     }
 
     protected function getValue() {
         return $this->_value;
+    }
+
+    protected function createCommand($function, $args) {
+        is_string($function) && $function = '\\'.__NAMESPACE__.'\Conditions\\'.$function;
+
+        return new ConditionCommand($function, $args);
     }
 }
