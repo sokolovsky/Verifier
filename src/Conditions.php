@@ -37,6 +37,12 @@ function notIn($verifiedValue, array $list) {
     return !in_array($verifiedValue, $list);
 }
 
+function contains($verifiedValue, $string) {
+    $verifiedValue = strtolower($verifiedValue);
+    $string = strtolower($string);
+    return strpos($verifiedValue, $string) !== false;
+}
+
 function range($verifiedValue, array $range) {
     return $verifiedValue >= $range[0] && $verifiedValue <= $range[1];
 }

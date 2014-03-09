@@ -12,6 +12,7 @@ namespace Verifier;
  * @method \Verifier\Item equal(\scalar $value, \string $message = "")
  * @method \Verifier\Item in(array $list, \string $message = "")
  * @method \Verifier\Item notIn(array $list, \string $message = "")
+ * @method \Verifier\Item contains($string, \string $message = "")
  * @method \Verifier\Item range(array $range, \string $message = "")
  * @method \Verifier\Item byFunction(callback $function, \string $message = "")
  * @method \Verifier\Item byRegularExpression(\string $pattern, \string $message = "")
