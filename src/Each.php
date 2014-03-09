@@ -10,8 +10,9 @@ class Each extends Item {
         $function = $this->getVerifyMethod($method);
         $message = array_pop($args);
         $referenceValue = $this->getReferenceValue($args);
+
         foreach ($this->getValue() as $itemValue) {
-            return $this->processCondition($function($itemValue, $referenceValue), $message);
+            $this->processCondition($function($itemValue, $referenceValue), $message);
         }
         return $this;
     }
