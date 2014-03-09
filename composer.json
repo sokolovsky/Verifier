@@ -1,0 +1,11 @@
+{
+    "name": "sokolovsky/Verifier",
+    "description": "Data Verification for PHP",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Maxim Sokolovsky",
+            "email": "sokolovsky@worksolutions.ru"
+        }
+    ]
+}
