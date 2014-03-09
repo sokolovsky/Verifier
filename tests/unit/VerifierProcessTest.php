@@ -17,6 +17,19 @@ class VerifierProcessTest extends PHPUnit_Framework_TestCase {
         $this->assertFalse($v->isValid());
     }
 
+    public function testUsePath() {
+        $v = new Verifier\Verifier(array(
+            'one' => array(
+                'value' => 10
+            )
+        ));
+
+        $field = $v->field('one.value');
+        $field->equal(10);
+
+        $this->assertTrue($v->isValid());
+    }
+
     public function testSimpleFields() {
         $v = new Verifier\Verifier(array(
             'email' => 'some@mai.com',

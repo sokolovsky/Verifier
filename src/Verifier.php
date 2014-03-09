@@ -153,7 +153,7 @@ class Verifier {
             }
             $value = $value->$pathItem;
             if (count($arPath)) {
-                if (is_scalar($value->$pathItem)) {
+                if (is_scalar($value)) {
                     throw new DatatypeException("Error field path  `$path` ($pathItem) " .  var_export($value, true));
                 } else {
                     $value = (object)$value;
