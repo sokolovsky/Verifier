@@ -26,7 +26,7 @@ function moreOrEqual ($verifiedValue, $referenceValue) {
 }
 
 function lessOrEqual ($verifiedValue, $referenceValue) {
-    return $verifiedValue >= $referenceValue;
+    return $verifiedValue <= $referenceValue;
 }
 
 function in($verifiedValue, array $list) {
