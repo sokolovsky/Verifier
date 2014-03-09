@@ -53,9 +53,12 @@ abstract class Item {
         return $fName;
     }
 
-    protected function getReferenceValue($args) {
-        $value = $args[0];
-        if ($this->_verifier->isUseDependency() && count($args) == 1 && is_string($value)) {
+    protected function getReferenceValue($arguments) {
+        if (empty ($arguments)) {
+            return null;
+        }
+        $value = $arguments[0];
+        if ($this->_verifier->isUseDependency() && count($arguments) == 1 && is_string($value)) {
             try {
                 $value = $this->_verifier->field($value)->getValue();
             } catch (DatatypeException $e) {
