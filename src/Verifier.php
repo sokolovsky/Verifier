@@ -131,6 +131,9 @@ class Verifier {
         $arPath = explode('.', $path);
         $value = $this->_data;
         while($pathItem = array_shift($arPath)) {
+            if (!property_exists($value, $pathItem)) {
+                throw new DatatypeException("Error field path `$path`");
+            }
             $value = $value->$pathItem;
             if (count($arPath)) {
                 if (is_scalar($value->$pathItem)) {
