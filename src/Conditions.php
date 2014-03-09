@@ -62,7 +62,7 @@ function lengthLessOrEqual($verifiedValue, $lenght) {
 }
 
 function numeric($verifiedValue) {
-    return is_numeric($verifiedValue);
+    return (bool)preg_match('/^\d[\d\\,\\.\s]*$/iu', $verifiedValue);
 }
 
 function byFunction($verifiedValue, $function) {
