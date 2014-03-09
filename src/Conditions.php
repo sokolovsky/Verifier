@@ -22,7 +22,7 @@ function notEmpty($verifiedValue) {
 }
 
 function moreOrEqual ($verifiedValue, $referenceValue) {
-    return $verifiedValue <= $referenceValue;
+    return $verifiedValue >= $referenceValue;
 }
 
 function lessOrEqual ($verifiedValue, $referenceValue) {
