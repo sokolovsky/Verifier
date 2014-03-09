@@ -70,7 +70,7 @@ function byFunction($verifiedValue, $function) {
 }
 
 function byRegularExpression($verifiedValue, $pattern) {
-    return preg_match($pattern, $verifiedValue);
+    return (bool)preg_match($pattern, $verifiedValue);
 }
 
 function email($verifiedValue) {
