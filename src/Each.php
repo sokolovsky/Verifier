@@ -12,7 +12,7 @@ class Each extends Item {
         $referenceValue = $this->getReferenceValue($args);
         foreach ($this->getValue() as $itemValue) {
             if (!$function($itemValue, $referenceValue)) {
-                return $this->proccessCondition(false, $message);
+                return $this->processCondition(false, $message);
             }
         }
         return $this;

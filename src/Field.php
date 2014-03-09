@@ -12,6 +12,6 @@ class Field extends Item {
         $function = $this->getVerifyMethod($method);
         $message = array_pop($args);
         $referenceValue = $this->getReferenceValue($args);
-        return $this->proccessCondition($function($this->getValue(), $referenceValue), $message);
+        return $this->processCondition($function($this->getValue(), $referenceValue), $message);
     }
 }

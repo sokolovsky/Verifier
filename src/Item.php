@@ -107,7 +107,7 @@ abstract class Item {
         return !empty($this->_errors);
     }
 
-    protected function proccessCondition($condition, $message) {
+    protected function processCondition($condition, $message) {
         if (!$this->_notExecute) {
             $this->_verifier->setAsChanged();
             !(bool) $condition && $this->_addError($message);
