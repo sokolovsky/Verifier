@@ -11,9 +11,7 @@ class Each extends Item {
         $message = array_pop($args);
         $referenceValue = $this->getReferenceValue($args);
         foreach ($this->getValue() as $itemValue) {
-            if (!$function($itemValue, $referenceValue)) {
-                return $this->processCondition(false, $message);
-            }
+            return $this->processCondition($function($itemValue, $referenceValue), $message);
         }
         return $this;
     }
