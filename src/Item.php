@@ -45,28 +45,6 @@ abstract class Item {
         $this->_label = (string)$label;
     }
 
-    protected function getVerifyMethod($name) {
-        $fName = __NAMESPACE__.'\Conditions\\'.$name;
-        if (!function_exists($fName)) {
-            throw new ErrorCodeException("Method `{$name}` not exists");
-        }
-        return $fName;
-    }
-
-    protected function getReferenceValue($arguments) {
-        if (empty ($arguments)) {
-            return null;
-        }
-        $value = $arguments[0];
-        if ($this->_verifier->isUseDependency() && count($arguments) == 1 && is_string($value)) {
-            try {
-                $value = $this->_verifier->field($value)->getValue();
-            } catch (DatatypeException $e) {
-            }
-        }
-        return $value;
-    }
-
     /**
      * If you currently checking the item is already wrong, check the rest ignored.
      * @return \Verifier\Item
