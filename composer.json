@@ -2,10 +2,18 @@
     "name": "sokolovsky/Verifier",
     "description": "Data Verification for PHP",
     "minimum-stability": "dev",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.0"
+    },
     "authors": [
         {
             "name": "Maxim Sokolovsky",
             "email": "sokolovsky@worksolutions.ru"
         }
-    ]
+    ],
+    "autoload": {
+        "classmap": ["src/"],
+        "files": ["src/Conditions.php", "src/Exceptions.php"]
+    }
 }
