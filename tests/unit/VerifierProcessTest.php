@@ -48,7 +48,7 @@ class VerifierProcessTest extends PHPUnit_Framework_TestCase {
     public function testIteratorProcess() {
         $v = new \Verifier\Verifier(array(
             'set' => array(
-                1,2,3,4
+                1,2,3,4,5
             )
         ));
 

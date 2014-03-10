@@ -10,6 +10,7 @@ class Field extends Item {
 
     public function __call($method, $args) {
         $command = $this->createCommand($method, $args);
-        return $this->processCondition($command, $this->getValue());
+        $this->processCondition($command, $this->getValue());
+        return $this;
     }
 }

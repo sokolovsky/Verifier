@@ -86,17 +86,24 @@ abstract class Item {
         return !empty($this->_errors);
     }
 
+    /**
+     * @param ConditionCommand $command
+     * @param $value
+     * @return bool
+     */
     protected function processCondition(ConditionCommand $command, $value) {
-        if (!$this->_notExecute) {
-            $this->_verifier->setAsChanged();
-            $refValue = $command->getReferenceValue();
-            if ($this->_verifier->isUseDependency() && $this->_verifier->hasItem($refValue)) {
-                $dependsRefValue = $this->_verifier->field($refValue)->getValue();
-                $command->setReferenceValue($dependsRefValue);
-            }
-            !$command->execute($value) && $this->_addError($command->getMessage());
+        if ($this->_notExecute) {
+            return false;
         }
-        return $this;
+        $this->_verifier->setAsChanged();
+        $refValue = $command->getReferenceValue();
+        if ($this->_verifier->isUseDependency() && $this->_verifier->hasItem($refValue)) {
+            $dependsRefValue = $this->_verifier->field($refValue)->getValue();
+            $command->setReferenceValue($dependsRefValue);
+        }
+        $isVerified = $command->execute($value);
+        !$isVerified && $this->_addError($command->getMessage());
+        return $isVerified;
     }
 
     protected function getValue() {
