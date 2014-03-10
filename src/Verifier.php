@@ -1,10 +1,5 @@
 <?php
 namespace Verifier;
-require_once __DIR__.'/Item.php';
-require_once __DIR__.'/Field.php';
-require_once __DIR__ . '/FieldsList.php';
-require_once __DIR__.'/Conditions.php';
-require_once __DIR__.'/ConditionCommand.php';
 
 /**
  * Verification of data
@@ -163,13 +158,3 @@ class Verifier {
         return $value;
     }
 }
-
-class Exception extends \Exception {
-}
-
-class DatatypeException extends Exception {
-}
-
-class ErrorCodeException extends Exception {
-}
-
