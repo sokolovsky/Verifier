@@ -1,7 +1,7 @@
 {
     "name": "sokolovsky/Verifier",
     "description": "Data Verification for PHP",
-    "minimum-stability": "dev",
+    "minimum-stability": "dev-master",
     "license": "MIT",
     "require": {
         "php": ">=5.3.0"
