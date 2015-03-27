@@ -107,4 +107,19 @@ class VerifierProcessTest extends PHPUnit_Framework_TestCase {
             'one' => array('one more than three')
         ), $v->getErrors());
     }
+
+    public function testSimpleEqual() {
+
+        $v = new \Verifier\Verifier(array(
+            'pass' => '111',
+            'confirm' => '111'
+        ));
+
+        $v->field('pass')
+            ->notEmpty('Some message')
+            ->ifValid()
+            ->equal('111', 'Need from valid');
+
+        $this->assertTrue($v->isValid());
+    }
 }
