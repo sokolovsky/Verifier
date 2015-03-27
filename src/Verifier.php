@@ -52,7 +52,7 @@ class Verifier {
      * @return boolean
      */
     public function isUseDependency() {
-        return $this->useDependency();
+        return $this->_useDependency;
     }
 
     /**
